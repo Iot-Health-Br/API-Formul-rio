@@ -1,9 +1,9 @@
 package com.SpringAPIFormulario.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
-import com.SpringAPIFormulario.entity.user;
+import com.SpringAPIFormulario.entity.User;
 
 
-public interface userRepository extends JpaRepository<user,Long> {
+public interface UserRepository extends JpaRepository<User,Long> {
     
 }

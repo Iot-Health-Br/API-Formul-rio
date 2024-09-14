@@ -1,23 +1,24 @@
 package com.SpringAPIFormulario.controller;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
-
-import com.SpringAPIFormulario.entity.user;
-import com.SpringAPIFormulario.repository.userRepository;
+import com.SpringAPIFormulario.entity.User;
+import com.SpringAPIFormulario.service.UserService;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/usuarios")
-public class userController {
-    @Autowired
-    private userRepository usuarioRepository;
+@CrossOrigin(origins = "http://localhost:4200") // Permitir o CORS para o Angular
+public class UserController {
 
+    private final UserService userService;
+
+    // Injeção de dependência via construtor
+    public UserController(UserService userService) {
+        this.userService = userService;
+    }
+
+    // Endpoint para salvar um usuário
     @PostMapping
-    public user salvarUsuario(@RequestBody user usuario) {
-        return usuarioRepository.save(usuario);
+    public User saveUser(@RequestBody User user) {
+        return userService.saveUser(user);
     }
 }
-

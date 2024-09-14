@@ -1,22 +1,36 @@
 package com.SpringAPIFormulario.entity;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 
 @Entity
-public class user {
+@Table(name ="users")
+public class User {
 
     //Variables
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id; 
+
+    // Nome do usuário
+    @Column(nullable = false)
     private String nome="";
+
+    // CPF do usuário
+    @Column(nullable = false)
     private String cpf="";
 
+        
+    // Construtor padrão (sem argumentos)
+    public User() {
+    }
+
     //Constructor
-    public user(Long id, String nome, String cpf) {
+    public User(Long id, String nome, String cpf) {
         this.id = id;
         this.nome = nome;
         this.cpf = cpf;
@@ -26,6 +40,7 @@ public class user {
     public Long getId() {
         return id;
     }
+
     public void setId(Long id) {
         this.id = id;
     }
@@ -35,16 +50,17 @@ public class user {
     public void setNome(String nome) {
         this.nome = nome;
     }
+
     public String getCpf() {
         return cpf;
     }
+
     public void setCpf(String cpf) {
         this.cpf = cpf;
     }
 
-    //To String
     @Override
     public String toString() {
-        return "user [id=" + id + ", nome=" + nome + ", cpf=" + cpf + "]";
+        return "User [id=" + id + ", nome=" + nome + ", cpf=" + cpf + "]";
     }
 }
